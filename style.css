@@ -1,6 +1,7 @@
 /* stylelint-disable declaration-block-no-redundant-longhand-properties */
 
 body {
+  background-image:url("imagef.png"); width: 100%;  background-position:right;
   margin: 0px;
 
   /* BEGIN (write your solution here) */

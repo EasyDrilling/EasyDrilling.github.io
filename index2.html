@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">                                <!-- кодировка -->
+    <script type="text/javascript" href="JavaScript.js"></script>                           <!-- подключение ява скрипта -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">                                                   <!-- подключение CSS -->
+    <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />            <!-- Иконка -->
+    <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />                         <!-- Иконка -->
+    <link rel="shortcut icon" href="icon/favicon.ico" />                                             <!-- Иконка -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />               <!-- Иконка -->
+    <link rel="manifest" href="icon/site.webmanifest" />                                            <!-- Иконка -->
+
+    <title>Калькулятор бурения</title>                                           <!-- Название сайта -->
+</head>
+
+<body>
+<div class="card">
+<h1>Буровой калькулятор</h1></p>
+<div class="tabs">                                                                           <!-- Верхник блок кнопок -->
+<button type="button" class="active" onclick="tab('vol', this)">Объем скважины</button>
+<button type="button" onclick="tab('hyd', this)">Гидростатика</button>
+<button type="button" onclick="tab('mech', this)">ГДИ</button>
+<button type="button" onclick="tab('mud', this)">Цементирование</button>
+</div>
+
+                      <!-- Объем скважины -->
+<div id="vol" class="panel active">
+<label>Глубина колонны (м)</label>
+<input id="vol_h1" type="text" value="800">
+<label>Диаметр колонны (мм)</label>
+<input id="vol_d1" type="text" value="245">
+<label>Толщина стенки (мм)</label>
+<input id="vol_wall" type="text" value="9.2">
+<label>Забой (м)</label>
+<input id="vol_h2" type="text" value="1600">
+<label>Диаметр долота (мм)</label>
+<input id="vol_d2" type="text" value="220.7">
+<div class="out" id="vol_out">0</div>
+<button type="button" class="go" onclick="calcVol()">Рассчитать</button>
+</div>
+
+                      <!-- Гидростатика -->
+<div id="hyd" class="panel">
+<label>Расход Q (л/с)</label>
+<input id="hyd_q" type="text" value="30">
+<label>Диаметр скважины (мм)</label>
+<input id="hyd_dh" type="text" value="215.9">
+<label>Диаметр трубы (мм)</label>
+<input id="hyd_dp" type="text" value="127">
+<div class="out" id="hyd_out">0</div>
+<button type="button" class="go" onclick="calcHyd()">Рассчитать</button>
+</div>
+
+                      <!-- ГДИ -->
+<div id="mech" class="panel">
+<label>Нагрузка G (тс)</label>
+<input id="mech_g" type="text" value="12">
+<label>Диаметр долота (мм)</label>
+<input id="mech_db" type="text" value="215.9">
+<div class="out" id="mech_out">0</div>
+<button type="button" class="go" onclick="calcMech()">Рассчитать</button>
+</div>
+
+                      <!-- Цементирование -->
+<div id="mud" class="panel">
+<label>Диаметр D (мм)</label>
+<input id="mud_d" type="text" value="245">
+<label>Глубина H (м)</label>
+<input id="mud_h" type="text" value="3000">
+<label>Плотность rho (г/см3)</label>
+<input id="mud_rho" type="text" value="1.18">
+<div class="out" id="mud_out">0</div>
+<button type="button" class="go" onclick="calcMud()">Рассчитать</button>
+</div>
+
+<script>
+function val(id){return parseFloat(document.getElementById(id).value.replace(",","."));}
+
+function tab(id, btn){
+var panels=document.querySelectorAll(".panel");
+for(var i=0;i<panels.length;i++){panels[i].classList.remove('active');}
+document.getElementById(id).classList.add('active');
+var buttons=document.querySelectorAll('.tabs button');
+for(var j=0;j<buttons.length;j++){buttons[j].classList.remove('active');}
+btn.classList.add('active');
+}
+
+function calcVol(){
+var d1=val('vol_d1'), h1=val('vol_h1');
+if(isNaN(d1)||isNaN(h1)){document.getElementById('vol_out').innerHTML='Ошибка';return;}
+document.getElementById('vol_out').innerHTML=((d1*d1)*3.14*h1/1000000).toFixed(3)+" м3";
+}
+
+function calcHyd(){
+var q=val('hyd_q'), dh=val('hyd_dh'), dp=val('hyd_dp');
+if(isNaN(q)||isNaN(dh)||isNaN(dp)||q<=0||dh<=dp){document.getElementById('hyd_out').innerHTML='Ошибка';return;}
+var area=3.14/4*(dh*dh-dp*dp)/1000000;
+var v=(q/1000)/area;
+document.getElementById('hyd_out').innerHTML=v.toFixed(3)+' м/с';
+}
+
+function calcMech(){
+var g=val('mech_g'), db=val('mech_db');
+if(isNaN(g)||isNaN(db)||db<=0){document.getElementById('mech_out').innerHTML='Ошибка';return;}
+var f=g*9.81;
+var p=(f*1000)/(3.14/4*db*db);
+document.getElementById('mech_out').innerHTML=p.toFixed(3)+' МПа';
+}
+
+function calcMud(){
+var d=val('mud_d'), h=val('mud_h'), rho=val('mud_rho');
+if(isNaN(d)||isNaN(h)||isNaN(rho)||d<=0){document.getElementById('mud_out').innerHTML='Ошибка';return;}
+var vol=d*d*3.14/4*h/1000000;
+var ph=rho*9.81*h/1000;
+document.getElementById('mud_out').innerHTML=vol.toFixed(3)+' м3; P='+ph.toFixed(3)+' МПа';
+}
+calcVol();
+</script>
+</body>
+</html>
