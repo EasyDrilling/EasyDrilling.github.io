@@ -29,19 +29,19 @@
                       <!-- Объем скважины -->
 <div id="vol" class="panel active">
 <label>Диаметр колонны (мм)</label>
-<input id="vol_d1" type="text" value="245">
+<input id="vol_d1" type="text" inputmode="decimal" autocomplete="off" value="245">
 <label>Толщина стенки (мм)</label>
-<input id="vol_wall" type="text" value="9.2">
+<input id="vol_wall" type="text" inputmode="decimal" autocomplete="off" value="9.2">
 <label>Башмак на глубине (м)</label>
-<input id="vol_h1" type="text" value="800">
+<input id="vol_h1" type="text" inputmode="decimal" autocomplete="off" value="800">
 <label>Инструмент (мм)</label>
-<input id="vol_dSBT" type="text" value="127">
+<input id="vol_dSBT" type="text" inputmode="decimal" autocomplete="off" value="127">
 <label>Толщина стенки (мм)</label>
-<input id="vol_wallSBT" type="text" value="9">
+<input id="vol_wallSBT" type="text" inputmode="decimal" autocomplete="off" value="9">
 <label>Диаметр долота (мм)</label>
-<input id="vol_d2" type="text" value="220.7">
+<input id="vol_d2" type="text" inputmode="decimal" autocomplete="off" value="220.7">
 <label>Забой (м)</label>
-<input id="vol_h2" type="text" value="1600">
+<input id="vol_h2" type="text" inputmode="decimal" autocomplete="off" value="1600">
 <div class="out" id="vol_out">0</div>
 <button type="button" class="go" onclick="calcVol()">Рассчитать</button>
 </div>
@@ -49,9 +49,9 @@
                       <!-- Гидростатика -->
 <div id="hyd" class="panel">
 <label>Удельный вес раствора (г/см3)</label>
-<input id="hyd_y" type="text" value="1.01">
+<input id="hyd_y" type="text" inputmode="decimal" autocomplete="off" value="1.01">
 <label>Забой, вертикаль (м)</label>
-<input id="hyd_h" type="text" value="3000">
+<input id="hyd_h" type="text" inputmode="decimal" autocomplete="off" value="3000">
 <div class="out" id="hyd_out">0</div>
 <button type="button" class="go" onclick="calcHyd()">Рассчитать</button>
 </div>
@@ -76,9 +76,9 @@
 <p>Ризб – давление нагнетания, МПа.</p>
 </label>
 <label>t – продолжительность закачки жидкости в пласт (ч.)</label>
-<input id="mech_g" type="text" value="12">
+<input id="mech_g" type="text" inputmode="decimal" autocomplete="off" value="12">
 <label>V – объем закачанной жидкости, (м3.)</label>
-<input id="mech_db" type="text" value="215.9">
+<input id="mech_db" type="text" inputmode="decimal" autocomplete="off" value="215.9">
 <div class="out" id="mech_out">0</div>
 <button type="button" class="go" onclick="calcMech()">Рассчитать</button>
 </div>
@@ -86,11 +86,11 @@
                       <!-- Цементирование -->
 <div id="mud" class="panel">
 <label>Диаметр D (мм)</label>
-<input id="mud_d" type="text" value="245">
+<input id="mud_d" type="text" inputmode="decimal" autocomplete="off" value="245">
 <label>Глубина H (м)</label>
-<input id="mud_h" type="text" value="3000">
+<input id="mud_h" type="text" inputmode="decimal" autocomplete="off" value="3000">
 <label>Плотность rho (г/см3)</label>
-<input id="mud_rho" type="text" value="1.18">
+<input id="mud_rho" type="text" inputmode="decimal" autocomplete="off" value="1.18">
 <div class="out" id="mud_out">0</div>
 <button type="button" class="go" onclick="calcMud()">Рассчитать</button>
 </div>

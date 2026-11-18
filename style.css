@@ -1,6 +1,6 @@
 /* Журнал */
 body {
-  background-image:url("imagef.png"); width: 100%;  background-position:right;
+  background-image:url("imagef.jpg"); background-color:#0b1424; background-size:cover; background-position:right center;
   margin: 0px;
 
   /* BEGIN (write your solution here) */
@@ -38,7 +38,7 @@ text-align: center;
 }
 
 main {
-  width: 900px;
+  max-width: 900px;
   margin: auto;
 }
 
@@ -69,7 +69,7 @@ li {
   margin-bottom: 10px;
 }
 
-.tg  {border-collapse:separate;border-spacing:1px;}
+.tg  {border-collapse:separate;border-spacing:1px;width:100%;}
 
 .tg td{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:5px 5px;word-break:normal;}
@@ -77,3 +77,26 @@ li {
   font-weight:normal;overflow:hidden;padding:5px 5px;word-break:normal;}
 .tg .tg-normal{background-color:rgb(245, 248, 245);border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
 .tg .tg-highlight{background-color:#945e3aa1;border-color:inherit;text-align:center;vertical-align:top}
+
+/* Мобильная версия */
+@media (max-width: 700px) {
+  body { font-size: 16px; }
+
+  h1 { font-size: 30px; margin-top: 24px; padding: 0 12px; }
+  h2 { font-size: 20px; padding-bottom: 16px; padding-left: 12px; padding-right: 12px; }
+
+  section { margin-top: 20px; margin-bottom: 20px; padding-left: 8px; padding-right: 8px; }
+  section > h2 { padding-left: 4px; }
+
+  /* Таблица: колонки «Забой» и «Время» узкие, название операции занимает всё остальное */
+  .tg { border-spacing: 0; }
+  .tg td, .tg th { font-size: 13px; padding: 4px 4px; border-width: 1px; }
+  .tg td:nth-child(2), .tg th:nth-child(2) { width: 52px; text-align: right; }
+  .tg td:nth-child(3), .tg th:nth-child(3) { width: 58px; text-align: right; }
+  .tg .tg-highlight { font-size: 12px; color: #fff; }
+
+  /* Заголовки лежат прямо на тёмном фоне — делаем светлыми */
+  main > h1, main > h2, section > h2 { color: #fff; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); }
+  main > h1 a { color: #9ec5ff; }
+  main > h2 { border-bottom-color: rgba(255, 255, 255, 0.5); }
+}

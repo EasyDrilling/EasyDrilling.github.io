@@ -1,6 +1,6 @@
 
 /* Калькулятор */
-body{ background-image:url("imagef.png"); background-size: cover; font-family:Arial,sans-serif;margin:0;padding:20px}
+body{ background-image:url("imagef.jpg"); background-size: cover; background-color:#0b1424; font-family:Arial,sans-serif;margin:0;padding:20px}
 .card{max-width:800px;margin:0 auto;background: rgba(255, 255, 255, 0.7);border:1px solid #ddd;border-radius:12px;padding:20px}
 h1{margin-top:0}
 .tabs button{margin-right:6px;padding:8px 12px;border:1px solid #ccc;background:#f8f8f8;cursor:pointer}
@@ -11,3 +11,19 @@ label{display:block;margin:8px 0 4px}
 input{padding:8px;width:220px;max-width:100%}
 .out{margin:16px 0;font-size:12px;color:black;font-weight:bold} /* стиль текста результат. */ 
 button.go{padding:10px 16px;background:#2563eb;color:#fff;border:0;border-radius:8px;cursor:pointer}
+/* Мобильная версия */
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{margin-right:0;min-height:44px;border-radius:8px;font-size:16px}
+input{font-size:16px} /* 16px — чтобы iPhone не приближал страницу при вводе */
+button.go{min-height:44px;font-size:16px}
+
+@media (max-width: 600px){
+  body{padding:10px}
+  .card{padding:14px;border-radius:10px}
+  h1{font-size:24px}
+  .tabs button{flex:1 1 calc(50% - 8px);padding:8px 6px}
+  input{width:100%;box-sizing:border-box}
+  .out{font-size:15px}
+  .out p{margin:6px 0}
+  button.go{width:100%}
+}
